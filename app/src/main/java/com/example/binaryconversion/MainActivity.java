@@ -4,16 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,6 +68,39 @@ public class MainActivity extends AppCompatActivity {
         // 目标数据
         final TextView outputNum = findViewById(R.id.outputNum);
 
+        // 叉叉
+        final ImageView delete = findViewById(R.id.delete);
+
+        // 清空输入
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                inputNum.setText("");
+            }
+        });
+
+        // 显示、隐藏小叉叉
+        inputNum.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() == 0) {
+                    delete.setVisibility(View.GONE);
+                } else {
+                    delete.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         // 点击屏幕清空焦点
         findViewById(R.id.rootView).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +128,10 @@ public class MainActivity extends AppCompatActivity {
 //                  ﹎┈﹎ ●  ○ .﹎ ﹎o▂▃▅▆
 //                  ┈ ┈ /█\/▓\ ﹎ ┈ ﹎﹎ ┈ ﹎
 //                  ▅▆▇█████▇▆▅▃▂┈﹎
-                if (Calculate.inputRight(input_num, from)) {
+                if(input_num.equals("")) {
+                    outputNum.setText("");
+                }
+                else if (Calculate.inputRight(input_num, from)) {
                     // 计算结果，将字母转换为大写，输出到显示文本框上
                     outputNum.setText(Calculate.binaryChange(input_num, from, to).toUpperCase());
                 }

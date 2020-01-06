@@ -17,6 +17,7 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
@@ -47,10 +48,10 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
-                android:padding="0dp"
-                android:singleLine="true"
                 android:background="@drawable/circle_shape"
-                android:backgroundTint="#F0F0F0" />
+                android:backgroundTint="#F0F0F0"
+                android:padding="0dp"
+                android:singleLine="true" />
         </LinearLayout>
 
         <LinearLayout
@@ -72,17 +73,38 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/inputNum"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="5dp"
-                android:singleLine="true"
-                android:background="@drawable/circle_shape"
-                android:backgroundTint="#F0F0F0"
-                android:ems="10" />
+                android:backgroundTint="#FFFFFF"
+                android:backgroundTintMode="add">
+
+                <EditText
+                    android:id="@+id/inputNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/circle_shape"
+                    android:backgroundTint="#F0F0F0"
+                    android:ems="10"
+                    android:singleLine="true" />
+
+                <ImageView
+                    android:id="@+id/delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="8dp"
+                    android:visibility="gone"
+                    android:tint="#C8C8C8"
+                    android:scaleX="0.9"
+                    android:scaleY="0.9"
+                    app:srcCompat="@android:drawable/ic_notification_clear_all" />
+            </RelativeLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -111,9 +133,9 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
-                android:padding="0dp"
                 android:background="@drawable/circle_shape"
-                android:backgroundTint="#F0F0F0" />
+                android:backgroundTint="#F0F0F0"
+                android:padding="0dp" />
 
         </LinearLayout>
 
