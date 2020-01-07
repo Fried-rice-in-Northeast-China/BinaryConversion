@@ -32,21 +32,6 @@ public class Calculate {
                     }
                 }
             }
-            // 十六进制
-            else{
-                for(int i = 0; i < inputItem.length; i++){
-                    if(!isANum(inputItem[i])){
-                        if(isALetter(inputItem[i])){
-                            if(!(isLessThanLetter(inputItem[i], 'f') || isLessThanLetter(inputItem[i], 'F'))) {
-                                return false;
-                            }
-                        }
-                        else {
-                            return false;
-                        }
-                    }
-                }
-            }
             return true;
         }
         else {
@@ -65,27 +50,26 @@ public class Calculate {
         }
     }
 
-    /* 判断单个字符是否为字母 */
-    private static boolean isALetter(char c){
-        int ascii = (int) c;
-        if((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122)) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    /* 判断字母 A 是否小于字母 B */
-    private static boolean isLessThanLetter(char a, char b){
-        int aAscii = (int) a;
-        int bAscii = (int) b;
-        if((aAscii >= 65 && aAscii <= bAscii) || (aAscii >= 97 && aAscii <= bAscii)) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
+//    /* 判断单个字符是否为字母 */
+//    private static boolean isALetter(char c){
+//        int ascii = (int) c;
+//        if((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122)) {
+//            return true;
+//        }
+//        else {
+//            return false;
+//        }
+//    }
+//
+//    /* 判断字母 A 是否小于字母 B */
+//    private static boolean isLessThanLetter(char a, char b){
+//        int aAscii = (int) a;
+//        int bAscii = (int) b;
+//        if((aAscii >= 65 && aAscii <= bAscii) || (aAscii >= 97 && aAscii <= bAscii)) {
+//            return true;
+//        }
+//        else {
+//            return false;
+//        }
+//    }
 }

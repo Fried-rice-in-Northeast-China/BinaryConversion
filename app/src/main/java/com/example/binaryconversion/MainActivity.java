@@ -2,10 +2,16 @@ package com.example.binaryconversion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -16,8 +22,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         final EditText inputNum = findViewById(R.id.inputNum);
         // 目标数据
         final TextView outputNum = findViewById(R.id.outputNum);
-
         // 叉叉
         final ImageView delete = findViewById(R.id.delete);
 
@@ -131,19 +134,19 @@ public class MainActivity extends AppCompatActivity {
                 if(input_num.equals("")) {
                     outputNum.setText("");
                 }
-                else if (Calculate.inputRight(input_num, from)) {
+                else if(Calculate.inputRight(input_num, from)){
                     // 计算结果，将字母转换为大写，输出到显示文本框上
                     outputNum.setText(Calculate.binaryChange(input_num, from, to).toUpperCase());
                 }
                 else {
-                    Toast.makeText(MainActivity.this, "有输入误哦|ू･ω･` )", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "输入有误，再重下试一下吧(>ω･* )ﾉ", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
     /* spinner 适配器 */
-    private void setSearchAdapter(View view, int textArrayResId, Spinner spinner, final int[] search) {
+    private ArrayAdapter<CharSequence> setSearchAdapter(View view, int textArrayResId, Spinner spinner, final int[] search) {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(view.getContext(), textArrayResId, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -155,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView)
             {   }
         });
+        return adapter;
     }
 
     /* 将选项转换为进制数 */
@@ -175,5 +179,40 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return binary;
+    }
+
+    /* 菜单 */
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    /* 菜单条目 */
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.history:
+                //OnlineSearchDialog();
+                return true;
+            case R.id.exit:
+                AlertDialog.Builder builder_exit = new AlertDialog.Builder(MainActivity.this);
+                LayoutInflater inflater = getLayoutInflater();
+                final View view_exit = inflater.inflate(R.layout.exit, null);
+                builder_exit.setView(view_exit)
+                        .setNegativeButton("确定", new DialogInterface.OnClickListener()
+                        {
+                            public void onClick(DialogInterface dialog, int id)
+                            {
+                                //退出程序
+                                android.os.Process.killProcess(android.os.Process.myPid());
+                            }
+                        })
+                        .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {   }
+                        });
+                builder_exit.show();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

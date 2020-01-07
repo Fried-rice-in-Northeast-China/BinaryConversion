@@ -26,6 +26,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#FFFFFF"
             android:backgroundTintMode="add"
             android:orientation="horizontal">
@@ -34,7 +35,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
                 android:text="当前进制"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -47,7 +47,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/circle_shape"
                 android:backgroundTint="#F0F0F0"
@@ -58,6 +57,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#FFFFFF"
             android:backgroundTintMode="add"
             android:orientation="horizontal">
@@ -66,8 +66,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
                 android:text="输入数据"
+                android:layout_gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -77,6 +77,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:backgroundTint="#FFFFFF"
                 android:backgroundTintMode="add">
 
@@ -84,13 +85,15 @@
                     android:id="@+id/inputNum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:maxLength="22"
+                    android:digits="1234567890abcdefABCDEF"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/circle_shape"
                     android:backgroundTint="#F0F0F0"
                     android:ems="10"
-                    android:singleLine="true" />
+                    android:singleLine="false" />
 
                 <ImageView
                     android:id="@+id/delete"
@@ -98,12 +101,12 @@
                     android:layout_height="wrap_content"
                     android:visibility="gone"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerInParent="true"
                     android:background="@drawable/circle_cancle"
-                    android:tint="#FFFFFF"
                     android:scaleX="0.6"
                     android:scaleY="0.6"
+                    android:tint="#FFFFFF"
                     app:srcCompat="@android:drawable/ic_delete" />
             </RelativeLayout>
 
@@ -112,6 +115,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#FFFFFF"
             android:backgroundTintMode="add"
             android:orientation="horizontal">
@@ -120,7 +124,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
                 android:text="目标进制"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -133,7 +136,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/circle_shape"
                 android:backgroundTint="#F0F0F0"
@@ -144,6 +146,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#FFFFFF"
             android:backgroundTintMode="add"
             android:orientation="horizontal">
@@ -152,8 +155,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
                 android:text="输出数据"
+                android:layout_gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -165,10 +168,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
+                android:padding="5dp"
                 android:background="@drawable/circle_shape"
                 android:backgroundTint="#F0F0F0"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:ems="10" />
         </LinearLayout>
 
